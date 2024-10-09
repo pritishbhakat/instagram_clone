@@ -33,7 +33,7 @@ const ProfilePosts = () => {
       {!isLoading && (
         <>
         {
-          posts.map((post) => (
+          posts.slice().reverse().map((post) => (
             <ProfilePost post={post} key={post.id} />
           ))
         }
