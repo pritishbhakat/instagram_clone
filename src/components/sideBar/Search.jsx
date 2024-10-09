@@ -3,6 +3,7 @@ import {  SearchLogo } from '../../assets/constants'
 import { useRef } from "react";
 import useSearchUser from "../../hooks/useSearchUser";
 import SuggestedUser from "../suggestedUsers/SuggestedUser"
+import RecommendedUser from "./RecommendedUser";
 
 const Search = () => {
 
@@ -12,7 +13,6 @@ const Search = () => {
 
 	const handleSearchUser = (e) => {
 		e.preventDefault()
-		console.log(searchRef.current.value)
 		getUserProfile(searchRef.current.value)
 	}
 
@@ -46,11 +46,12 @@ const Search = () => {
 				<ModalContent bg={'black'} border={'1px solid gray'} maxW={'400px'}>
 					<ModalHeader>Search user</ModalHeader>
 					<ModalCloseButton/>
+				
 					<ModalBody pb={6}>
 						<form onSubmit={handleSearchUser}>
 							<FormControl>
-								<FormLabel>Username</FormLabel>
-								<Input placeholder="Enter username" ref={searchRef}/>
+								<FormLabel>Enter Username</FormLabel>
+								<Input placeholder="johndoe" ref={searchRef}/>
 							</FormControl>
 
 							<Flex w={'full'} justifyContent={'flex-end'}>
@@ -62,6 +63,10 @@ const Search = () => {
 						{user && <SuggestedUser user={user}  setUser={setUser}/>}
 
 					</ModalBody>
+					<Box display={{base:"block",md:"none"}}>
+					<RecommendedUser />
+
+					</Box>
 
 				</ModalContent>
 
